@@ -17,6 +17,12 @@
                               "protocol": "tcp"
                         }
                   ],
+                  "mountPoints" : [
+                        {
+                              "containerPath" : "/var/www/.cache",
+                              "sourceVolume"  : "mount"
+                        }
+                  ],
                   "logConfiguration" : {
                         "logDriver" : "awslogs",
                         "options"   : {
@@ -30,5 +36,13 @@
       "family": "golang-ssl-server",
       "cpu": "256",
       "memory": "512",
-      "requiresCompatibilities": ["EC2"]
+      "requiresCompatibilities": ["EC2"],
+      "volumes": [
+            {
+                  "name": "mount",
+                  "host": {
+                        "sourcePath": "/var/www/.cache"
+                  }
+            }
+      ]
 }
