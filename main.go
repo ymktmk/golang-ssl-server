@@ -10,7 +10,7 @@ import (
 
 func main() {
 	e := echo.New()
-	// // e.AutoTLSManager.HostPolicy = autocert.HostWhitelist("<DOMAIN>")
+	e.AutoTLSManager.HostPolicy = autocert.HostWhitelist("aws.code-run.ga")
 	// // Cache certificates to avoid issues with rate limits (https://letsencrypt.org/docs/rate-limits)
 	e.AutoTLSManager.Cache = autocert.DirCache("/var/www/.cache")
 	e.Use(middleware.Recover())

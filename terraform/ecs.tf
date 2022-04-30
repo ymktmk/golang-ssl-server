@@ -14,9 +14,7 @@ resource "aws_ecs_task_definition" "task_definition" {
             {
                 cpu              = 0
                 essential        = true
-                # ECRのイメージ
                 image            = "009554248005.dkr.ecr.ap-northeast-1.amazonaws.com/golang-ssl-server:v1"
-                # CloudWatchのログ
                 logConfiguration = {
                     logDriver = "awslogs"
                     options   = {
