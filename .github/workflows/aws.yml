@@ -10,6 +10,7 @@ env:
   ECR_REPOSITORY: golang-ssl-server
   ECS_SERVICE: service
   ECS_CLUSTER: cluster
+  # プロジェクトからのパス
   ECS_TASK_DEFINITION: .github/workflows/task-definition.json
   CONTAINER_NAME: golang-ssl-server
 
