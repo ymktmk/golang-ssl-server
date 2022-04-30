@@ -1,0 +1,11 @@
+**/.terraform/*
+
+*.tfstate
+*.tfstate.*
+
+*.tfvars
+*.tfstate.backup
+*.lock.hcl
+
+golang-ssl-server
+golang-ssl-server.pub
