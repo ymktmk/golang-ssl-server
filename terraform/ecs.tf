@@ -14,7 +14,7 @@ resource "aws_ecs_task_definition" "task_definition" {
             {
                 cpu              = 0
                 essential        = true
-                image            = "009554248005.dkr.ecr.ap-northeast-1.amazonaws.com/golang-ssl-server:v1"
+                image            = ""
                 logConfiguration = {
                     logDriver = "awslogs"
                     options   = {
@@ -23,6 +23,12 @@ resource "aws_ecs_task_definition" "task_definition" {
                         awslogs-group         = aws_cloudwatch_log_group.log_group_for_ecs.name
                     }
                 }
+                mountPoints      = [
+                    {
+                        containerPath = "/var/www/.cache"
+                        sourceVolume  = "mount"
+                    }
+                ]
                 name             = "golang-ssl-server"
                 portMappings     = [
                     {
@@ -43,6 +49,10 @@ resource "aws_ecs_task_definition" "task_definition" {
     family                   = "golang-ssl-server"
     memory                   = "512"
     requires_compatibilities = ["EC2"]
+    volume {
+        host_path = "/var/www/.cache"
+        name      = "mount"
+    }
 }
 
 # サービス
